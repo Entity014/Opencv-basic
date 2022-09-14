@@ -2,14 +2,14 @@
 #### Requirements :
 - opencv-python
 #### Feature :
-- Can print an array of images.
-- Can open an image with OpenCV.
-- Can open a video with OpenCV.
-- Can open Camera with OpenCV.
-- Can rescale the image.
-- Can export an image.
-- Can change an image to more color.
-- Can change a video to more color.
+- print an array of images.
+- open an image with OpenCV.
+- open a video with OpenCV.
+- open Camera with OpenCV.
+- rescale the image.
+- export an image.
+- change an image to more color.
+- change a video to more color.
 
 ## 👏 Introduction 👏
 - 👋 Hi, I’m @_Entity014
