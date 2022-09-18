@@ -1,4 +1,6 @@
 ## 🖥️ OpenCV 🖥️
+#### Credit :
+- https://www.youtube.com/watch?v=fLDJJXEykvo
 #### Requirements :
 - opencv-python
 #### Feature :
