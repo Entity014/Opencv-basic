@@ -1,8 +1,4 @@
 # อ่านภาพ
-from importlib.resources import path
-from tabnanny import check
-
-
 def read_img(path: str):
     import cv2
     # อ่านภาพ
@@ -50,7 +46,7 @@ def export_img(path: str):
     cv2.waitKey(0)
     cv2.destoryAllWindows()
 
-# เปิดกล้องด้วย opencv
+# เปิดกล้องด้วย OpenCV
 def vi_cap():
     import cv2
     # อ่านวิดีโอจากกล้อง
@@ -71,7 +67,7 @@ def vi_cap():
     cap.release()
     cv2.destroyAllWindows()
 
-# เปิดวิดีโอด้วย opencv
+# เปิดวิดีโอด้วย OpenCV
 def read_vi(path: str):
     import cv2
     # อ่านวิดีโอจากไฟล์ mp4
@@ -108,4 +104,81 @@ def gray_vi(path: str):
         if check == False:
             break
     cap.release()
+    cv2.destroyAllWindows()
+
+# บันทึกวิดีโอด้วย OpenCV <.mp4>
+def record_vi(name:str):
+    import cv2
+    cap = cv2.VideoCapture(0)
+    # ต้องกำหนด FourCC
+    # ? FourCC: กำหนดนามสกุลของไฟล์วิดีโอ
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    # บันทึกวิดีโอ
+    # VideoWriter(ชื่อไฟล์, FourCC, frame rate, ขนาดของวิดีโอ (x, y))
+    out = cv2.VideoWriter(name +'.mp4', fourcc, 20.0, (640,480))
+    while True:
+        check, frame = cap.read()
+        if check == True:
+            cv2.imshow('Video', frame)
+            # บันทึกแต่ละ frame ของกล้อง
+            out.write(frame)
+            if cv2.waitKey(1) & 0xFF == ord('e'):
+                break
+    
+    out.release()
+    cap.release()
+    cv2.destroyAllWindows()
+
+# วาดเส้นตรง
+def draw_line(path: str):
+    import cv2
+    img = cv2.imread(path)
+    img_resize = cv2.resize(img, (700,700))
+    # วาดเส้นตรง
+    # line(ภาพ, start (x, y), stop (x, y), สี (BGR), ความหนา)
+    #cv2.line(img_resize, (0, 248), (700, 248), (255, 0, 0), 10)
+    cv2.line(img_resize, (0, 629), (700, 629), (255, 0, 0), 10)
+    # วาดลูกศร
+    # arrowedLine(ภาพ, start (x, y), stop (x, y), สี (BGR), ความหนา)
+    cv2.arrowedLine(img_resize, (500,100), (500, 270), (0, 0, 255), 5)
+    cv2.imshow('Line', img_resize)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+# วาดสี่เหลี่ยม
+def draw_squ(path: str):
+    import cv2
+    img = cv2.imread(path)
+    img_resize = cv2.resize(img, (700, 700))
+    # วาดสี่เหลี่ยม
+    # rectangle(ภาพ, มุมบนซ้าย (x, y), มุมล่างขวา (x, y), สี (BGR), ความหนา)
+    # ? ความหนา = -1 ทำให้กลายเป็นสี่เหลี่ยมทึบ
+    cv2.rectangle(img_resize, (0, 248), (700, 629), (0, 0, 255), 10)
+    cv2.imshow('Rectangle', img_resize)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+# วาดวงกลม
+def draw_cir(path: str):
+    import cv2
+    img = cv2.imread(path)
+    img_resize = cv2.resize(img, (700, 700))
+    # วาดวงกลม
+    # circle(ภาพ, position of center (x, y), radis, สี (BGR), ความหนา)
+    cv2.circle(img_resize, (480, 380), 180, (0, 100, 255), 10)
+    cv2.imshow('Circle', img_resize)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows() 
+
+# เขียนข้อความบนภาพ
+def write_text(path: str):
+    import cv2
+    img = cv2.imread(path)
+    img_resize = cv2.resize(img, (700, 700))
+    # เขียนข้อความ
+    # putText(ภาพ, text, position (x,y), font, size of text, สี (BGR), ความหนา)
+    cv2.putText(img_resize, 'Cat', (440, 130), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 255), cv2.LINE_8)
+    cv2.arrowedLine(img_resize, (500,150), (500, 270), (255, 0, 255), 5)
+    cv2.imshow('Text', img_resize)
+    cv2.waitKey(0)
     cv2.destroyAllWindows()
