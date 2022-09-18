@@ -7,7 +7,7 @@
 - print an array of images.
 - rescale the image.
 - open image / video / Camera with OpenCV.
-- export image and video.
+- export image / video.
 - change the image / video to more color.
 - draw line / rectangle / circle in the image.
 - put Text in the image.
