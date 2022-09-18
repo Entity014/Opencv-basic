@@ -1,2 +1,2 @@
-from function import gray_vi
-gray_vi('image/Video.mp4')
+from function import write_text
+write_text(path)
