@@ -5,13 +5,12 @@
 - opencv-python
 #### Feature :
 - print an array of images.
-- open an image with OpenCV.
-- open a video with OpenCV.
-- open Camera with OpenCV.
 - rescale the image.
-- export an image.
-- change an image to more color.
-- change a video to more color.
+- open image / video / Camera with OpenCV.
+- export image and video.
+- change the image / video to more color.
+- draw line / rectangle / circle in the image.
+- put Text in the image.
 
 ## 👏 Introduction 👏
 - 👋 Hi, I’m @_Entity014
